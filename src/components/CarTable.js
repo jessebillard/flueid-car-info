@@ -3,7 +3,15 @@ import React from 'react';
 
 class CarTable extends React.Component {
     render() {          
-        const cars = this.props.selectedCars ? this.props.selectedCars : this.props.mainCarList   
+        let cars = ''
+        if (this.props.selectedSpeedCars) {
+            cars = this.props.selectedSpeedCars
+        } else if (this.props.selectedWeightCar) {
+            cars = this.props.selectedWeightCar
+        } else {
+            cars = this.props.mainCarList
+        }
+        console.log(this.props)
         return (            
                 <table id='car-table'>
                     <tbody>                       
@@ -11,7 +19,7 @@ class CarTable extends React.Component {
                             // conditionally renders speedMeasurement to be 'mph' if using topSpeed button
                             // otherwise use the speedMeasurement based off of country of origin
                             let speedMeasurement = ''
-                            if (this.props.selectedCars) {
+                            if (this.props.selectedSpeedCars) {
                                 speedMeasurement = 'mph'
                             } else {
                                 speedMeasurement = car.COO === 'USA' ? 'mph' : 'km/h'
@@ -20,7 +28,7 @@ class CarTable extends React.Component {
                                 <tr key={index}>
                                     <td>{car.make}</td>
                                     <td>{car.COO}</td>
-                                    <td>{car.topSpeed} {speedMeasurement}</td>
+                                    {this.props.selectedWeightCar ? <td>{car.weightCapacity} lbs weight capacity</td> : <td>{car.topSpeed} {speedMeasurement}</td> }
                                 </tr>
                             )
                         })}
@@ -33,7 +41,8 @@ class CarTable extends React.Component {
 const mapStateToProps = (state) => {
     return {
         mainCarList: state.cars,
-        selectedCars: state.selectedCars
+        selectedSpeedCars: state.selectedSpeedCars,
+        selectedWeightCar: state.selectedWeightCar
     }
 }
 
