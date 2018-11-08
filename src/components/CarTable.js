@@ -8,10 +8,13 @@ class CarTable extends React.Component {
             cars = this.props.selectedSpeedCars
         } else if (this.props.selectedWeightCar) {
             cars = this.props.selectedWeightCar
+        } else if (this.props.sortedByMake){
+            cars = this.props.sortedByMake
+        } else if (this.props.sortedBySpeed) {
+            cars = this.props.sortedBySpeed
         } else {
             cars = this.props.mainCarList
-        }
-        console.log(this.props)
+        }        
         return (            
                 <table id='car-table'>
                     <tbody>                       
@@ -21,9 +24,11 @@ class CarTable extends React.Component {
                             let speedMeasurement = ''
                             if (this.props.selectedSpeedCars) {
                                 speedMeasurement = 'mph'
+                            } else if (this.props.sortedBySpeed) {
+                                speedMeasurement = 'mph'
                             } else {
                                 speedMeasurement = car.COO === 'USA' ? 'mph' : 'km/h'
-                            }
+                            }                            
                             return (
                                 <tr key={index}>
                                     <td>{car.make}</td>
@@ -42,7 +47,9 @@ const mapStateToProps = (state) => {
     return {
         mainCarList: state.cars,
         selectedSpeedCars: state.selectedSpeedCars,
-        selectedWeightCar: state.selectedWeightCar
+        selectedWeightCar: state.selectedWeightCar,
+        sortedByMake: state.sortedByMake,
+        sortedBySpeed: state.sortedBySpeed
     }
 }
 

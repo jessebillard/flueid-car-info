@@ -3,7 +3,9 @@ import carData from '../carData'
 export default (state = {
     cars: carData,
     selectedSpeedCars: '',
-    selectedWeightCar: ''
+    selectedWeightCar: '',
+    sortedByMake: '',
+    sortedBySpeed: ''
 }, action) => {
     switch (action.type) {
         case 'TOPSPEED_BUTTON_SELECT':               
@@ -15,7 +17,9 @@ export default (state = {
             return {
                 ...state,
                 selectedSpeedCars: euroCars,
-                selectedWeightCar: ''
+                selectedWeightCar: '',
+                sortedByMake: '',
+                sortedBySpeed: ''
             }
         case 'WEIGHT_CAPACITY_BUTTON_SELECT':                 
         const carsCopyForWeight = state.cars.map(car => Object.assign({weightCapacity: ''}, car))         
@@ -26,12 +30,44 @@ export default (state = {
                 car.weightCapacity = (car.passengerCapacity * 300) + (car.cargoSquareFeet * 50)
             }
         })
-        carsCopyForWeight.sort((a, b) => b.weightCapacity - a.weightCapacity)
-        // debugger
+        carsCopyForWeight.sort((a, b) => b.weightCapacity - a.weightCapacity)        
             return {
                 ...state,
                 selectedWeightCar: [carsCopyForWeight[1]],
-                selectedSpeedCars: ''
+                selectedSpeedCars: '',
+                sortedByMake: '',
+                sortedBySpeed: ''
+            }
+        case 'SORT_BY_MAKE':
+            const carsCopyByMake = state.cars.map(car => Object.assign({}, car))
+            carsCopyByMake.sort((a, b) => {
+                if (a.make < b.make) {
+                    return -1
+                } else if (a.make > b.make) {
+                    return 1
+                } else return 0
+            })            
+            return {
+                ...state,
+                selectedWeightCar: '',
+                selectedSpeedCars: '',
+                sortedByMake: carsCopyByMake,
+                sortedBySpeed: ''
+            }
+        case 'SORT_BY_SPEED':
+        const carsCopyBySpeed = state.cars.map(car => Object.assign({}, car))
+        carsCopyBySpeed.forEach(car => {
+            if (car.COO !== 'USA') {
+                car.topSpeed = Math.floor(car.topSpeed / 1.609)
+            }
+        })     
+        carsCopyBySpeed.sort((a, b) => b.topSpeed - a.topSpeed)                   
+            return {
+                ...state,
+                selectedWeightCar: '',
+                selectedSpeedCars: '',
+                sortedByMake: '',
+                sortedBySpeed: carsCopyBySpeed
             }
         default:
             return state
