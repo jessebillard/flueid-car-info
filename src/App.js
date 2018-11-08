@@ -1,3 +1,4 @@
+import CarInfoContainer from './components/CarInfoContainer';
 import Header from './components/Header';
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
@@ -8,6 +9,7 @@ class App extends Component {
     return (
       <div>
         <Header />
+        <CarInfoContainer/>
       </div>      
     );
   }

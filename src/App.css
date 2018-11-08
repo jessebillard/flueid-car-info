@@ -35,6 +35,83 @@
 .date {
   position: relative;
   color: white;
-  left: 80%;
+  left: 72.5%;
   top: 60%;
+}
+.car-info-container {
+  background-color: #f8f8f8;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+  width: 1010px;
+}
+
+.car-info-column {
+  flex: 50%; 
+  padding: 1px;
+  margin: 5px;
+  border-radius: 5px;  
+}
+
+.car-info-selector-container {
+  display: flex;
+}
+
+.list-sort-column {
+  flex: 30%;
+  justify-content: center;
+}
+
+.car-selection-column {
+  flex: 50%;
+  margin-top: 16px;
+}
+
+.dropdown {
+  margin-top: -16px;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  display: flex;
+}
+
+.button-column {
+  flex: 50%;
+}
+
+.button {
+  background-color: #008fd6;
+  text-align: center;
+  width: 135px;
+  height: 34px;
+  border-radius: 5px;
+}
+
+.button-text {
+  padding-top: 8px;
+  color: white;
+}
+
+#car-table {  
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#car-table td, #car-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#car-table tr:nth-child(even){background-color: #eaeaea;}
+
+#car-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
 }
