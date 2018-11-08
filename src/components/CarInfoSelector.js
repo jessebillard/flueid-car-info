@@ -1,7 +1,20 @@
+import { connect } from 'react-redux'
 import React from 'react';
 import { Dropdown } from 'semantic-ui-react'
+import classNames from 'classnames'
+import { topSpeedButtonSelect, weightCapacityButtonSelect } from '../actions/index'
 
 class CarInfoSelector extends React.Component {
+    
+    handleButtonClick = (e) => {
+        
+        if (e.target.className.includes('weight')) {
+            this.props.weightCapacityButtonSelect()
+        } else {
+            this.props.topSpeedButtonSelect()
+        }
+    }
+    
     render() {
         return (
             <div className='car-info-selector-container'>
@@ -17,13 +30,13 @@ class CarInfoSelector extends React.Component {
                     </Dropdown>
                     <div className='button-container'>
                         <div className='button-column'>
-                            <div className='button'>
-                                <p className='button-text'>Weight Capacity</p>
+                            <div onClick={this.handleButtonClick} className={classNames('button', 'weight')}>
+                                <p className={classNames('button-text', 'weight')}>Weight Capacity</p>
                             </div>
                         </div>
                         <div className='button-column'>
-                            <div className='button'>
-                                <p className='button-text'>Top Speed</p>
+                            <div onClick={this.handleButtonClick} className={classNames('button', 'speed')}>
+                                <p className={classNames('button-text', 'speed')}>Top Speed</p>
                             </div>
                         </div>
                     </div>
@@ -33,4 +46,4 @@ class CarInfoSelector extends React.Component {
     }
 };
 
-export default CarInfoSelector;
+export default connect(null, { topSpeedButtonSelect, weightCapacityButtonSelect })(CarInfoSelector);

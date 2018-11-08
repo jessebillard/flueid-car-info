@@ -2,9 +2,9 @@
   position: relative;
   z-index: 1;
   background-color: #008fd6;
-  height: 8em;
+  height: 10em;
   margin-bottom: 1em;
-  margin-top: -16px;
+  
 }
 .black-box { 
   position: absolute;

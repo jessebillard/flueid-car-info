@@ -1,26 +1,40 @@
+import { connect } from 'react-redux';
 import React from 'react';
 
 class CarTable extends React.Component {
-    render() {
+    render() {          
+        const cars = this.props.selectedCars ? this.props.selectedCars : this.props.mainCarList   
         return (            
                 <table id='car-table'>
-                    <tbody>
-                        <tr>
-                            <td>asdf</td>
-                            <td>asdf</td>
-                            <td>asdf</td>
-                        </tr>
-                        <tr>
-                            <td>fdsa</td>
-                            <td>fdsa</td>
-                            <td>fdsa</td>
-                        </tr>
-                    </tbody>
-                    {/* map over the cars that are selected and make a <tr></tr> for each car */}
-                    {/* each of these rows will have <td></td> for each car's data  */}
+                    <tbody>                       
+                        {cars.map((car, index) => {
+                            // conditionally renders speedMeasurement to be 'mph' if using topSpeed button
+                            // otherwise use the speedMeasurement based off of country of origin
+                            let speedMeasurement = ''
+                            if (this.props.selectedCars) {
+                                speedMeasurement = 'mph'
+                            } else {
+                                speedMeasurement = car.COO === 'USA' ? 'mph' : 'km/h'
+                            }
+                            return (
+                                <tr key={index}>
+                                    <td>{car.make}</td>
+                                    <td>{car.COO}</td>
+                                    <td>{car.topSpeed} {speedMeasurement}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>     
                 </table>            
         )
     }
 }
 
-export default CarTable;
+const mapStateToProps = (state) => {
+    return {
+        mainCarList: state.cars,
+        selectedCars: state.selectedCars
+    }
+}
+
+export default connect(mapStateToProps)(CarTable);
