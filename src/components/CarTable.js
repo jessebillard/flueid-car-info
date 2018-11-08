@@ -25,13 +25,13 @@ class CarTable extends React.Component {
                             if (this.props.selectedSpeedCars) {
                                 speedMeasurement = 'mph'
                             } else if (this.props.sortedBySpeed) {
-                                speedMeasurement = 'mph'
+                                speedMeasurement = car.COO === 'USA' ? 'mph' : 'km/h'
                             } else {
                                 speedMeasurement = car.COO === 'USA' ? 'mph' : 'km/h'
                             }                            
                             return (
                                 <tr key={index}>
-                                    <td>{car.make}</td>
+                                    <td>{car.make} {car.model}</td>
                                     <td>{car.COO}</td>
                                     {this.props.selectedWeightCar ? <td>{car.weightCapacity} lbs weight capacity</td> : <td>{car.topSpeed} {speedMeasurement}</td> }
                                 </tr>

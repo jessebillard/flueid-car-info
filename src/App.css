@@ -83,12 +83,22 @@
   flex: 50%;
 }
 
-.button {
+.button-right {
   background-color: #008fd6;
   text-align: center;
-  width: 135px;
+  width: 140px;
   height: 34px;
   border-radius: 5px;
+  float: right;
+}
+
+.button-left {
+  background-color: #008fd6;
+  text-align: center;
+  width: 140px;
+  height: 34px;
+  border-radius: 5px;
+  float: left;
 }
 
 .button-text {

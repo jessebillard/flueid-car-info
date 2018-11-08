@@ -44,12 +44,12 @@ class CarInfoSelector extends React.Component {
                     <Dropdown onClose={this.handleDropdownSelection} className='dropdown' placeholder='Sort by...' fluid selection options={dropdownOptions} />                        
                     <div className='button-container'>
                         <div className='button-column'>
-                            <div onClick={this.handleButtonClick} className={classNames('button', 'weight')}>
+                            <div onClick={this.handleButtonClick} className={classNames('button-left', 'weight')}>
                                 <p className={classNames('button-text', 'weight')}>Weight Capacity</p>
                             </div>
                         </div>
                         <div className='button-column'>
-                            <div onClick={this.handleButtonClick} className={classNames('button', 'speed')}>
+                            <div onClick={this.handleButtonClick} className={classNames('button-right', 'speed')}>
                                 <p className={classNames('button-text', 'speed')}>Top Speed</p>
                             </div>
                         </div>

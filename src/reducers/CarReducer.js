@@ -61,7 +61,26 @@ export default (state = {
                 car.topSpeed = Math.floor(car.topSpeed / 1.609)
             }
         })     
-        carsCopyBySpeed.sort((a, b) => b.topSpeed - a.topSpeed)                   
+        carsCopyBySpeed.sort((a, b) => b.topSpeed - a.topSpeed)
+        // carsCopyBySpeed.sort((a, b) => {
+        //     if (a.COO !== 'USA' && b.COO !== 'USA') {
+        //         const bConverted = Math.floor(b.topSpeed / 1.609)
+        //         const aConverted = Math.floor(a.topSpeed / 1.609)
+        //         if (bConverted > aConverted) {
+        //             return b - a
+        //         }
+        //     } else if (a.COO !== 'USA') {
+        //         const aConverted = Math.floor(a.topSpeed / 1.609)
+        //         if (b.topSpeed > aConverted) {
+        //             return b - a
+        //         }
+        //     } else if (b.COO !== 'USA') {
+        //         const bConverted = Math.floor(a.topSpeed / 1.609)
+        //         if (bConverted > a.topSpeed) {
+        //             return b - a
+        //         }
+        //     } 
+        // })                     
             return {
                 ...state,
                 selectedWeightCar: '',
