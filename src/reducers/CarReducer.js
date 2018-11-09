@@ -13,7 +13,7 @@ export default (state = {
             const carsCopyForSpeed = state.cars.map(car => Object.assign({}, car))
             const euroCars = carsCopyForSpeed.filter(car => car.COO === 'Germany' || car.COO === 'Sweden')
             euroCars.sort((a, b) => b.topSpeed - a.topSpeed)
-            euroCars.forEach(car => car.topSpeed = Math.floor(car.topSpeed / 1.609))
+            euroCars.forEach(car => car.topSpeed = Math.round(car.topSpeed / 1.609))
             return {
                 ...state,
                 selectedSpeedCars: euroCars,
@@ -58,29 +58,38 @@ export default (state = {
         const carsCopyBySpeed = state.cars.map(car => Object.assign({}, car))
         carsCopyBySpeed.forEach(car => {
             if (car.COO !== 'USA') {
-                car.topSpeed = Math.floor(car.topSpeed / 1.609)
+                car.topSpeed = Math.round(car.topSpeed / 1.609)
             }
         })     
         carsCopyBySpeed.sort((a, b) => b.topSpeed - a.topSpeed)
+        carsCopyBySpeed.forEach(car => {
+            if (car.COO !== 'USA') {
+                car.topSpeed = Math.round(car.topSpeed * 1.609)
+            }
+        })
         // carsCopyBySpeed.sort((a, b) => {
         //     if (a.COO !== 'USA' && b.COO !== 'USA') {
         //         const bConverted = Math.floor(b.topSpeed / 1.609)
         //         const aConverted = Math.floor(a.topSpeed / 1.609)
+        //         // return bConverted - aConverted
         //         if (bConverted > aConverted) {
-        //             return b - a
+        //             return b.topSpeed - a.topSpeed
         //         }
         //     } else if (a.COO !== 'USA') {
         //         const aConverted = Math.floor(a.topSpeed / 1.609)
+        //         return b.topSpeed - aConverted
         //         if (b.topSpeed > aConverted) {
-        //             return b - a
+        //             return b.topSpeed - a.topSpeed
         //         }
         //     } else if (b.COO !== 'USA') {
         //         const bConverted = Math.floor(a.topSpeed / 1.609)
+        //         return bConverted - a.topSpeed
         //         if (bConverted > a.topSpeed) {
-        //             return b - a
+        //             return b.topSpeed - a.topSpeed
         //         }
         //     } 
-        // })                     
+        // })            
+        // debugger         
             return {
                 ...state,
                 selectedWeightCar: '',

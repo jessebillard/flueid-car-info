@@ -29,13 +29,13 @@
   position: absolute;
   z-index: 4;
   color: white;
-  left: 14.5%;
+  left: 15.1%;
   top: 31%;
 }
 .date {
   position: relative;
   color: white;
-  left: 72.5%;
+  left: 75%;  
   top: 60%;
 }
 .car-info-container {
@@ -45,14 +45,14 @@
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  height: 300px;
-  width: 1010px;
+  height: 320px;
+  width: 1020px;
 }
 
 .car-info-column {
   flex: 50%; 
   padding: 1px;
-  margin: 5px;
+  margin: 15px;
   border-radius: 5px;  
 }
 
@@ -63,6 +63,7 @@
 .list-sort-column {
   flex: 30%;
   justify-content: center;
+  padding-top: 7px;
 }
 
 .car-selection-column {
@@ -72,7 +73,7 @@
 
 .dropdown {
   margin-top: -16px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .button-container {
