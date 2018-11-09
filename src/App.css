@@ -1,11 +1,4 @@
-.header { 
-  position: relative;
-  z-index: 1;
-  background-color: #008fd6;
-  height: 10em;
-  margin-bottom: 1em;
-  
-}
+/* header styling */
 .black-box { 
   position: absolute;
   z-index: 3;
@@ -15,6 +8,14 @@
   left: 12%;
   top: 30%;
 }
+
+.date {
+  position: relative;
+  color: white;
+  left: 75%;  
+  top: 60%;
+}
+
 .grey-box { 
   position: absolute;
   z-index: 2;
@@ -25,6 +26,16 @@
   width: 75px;
   opacity: 0.9;
 }
+
+.header { 
+  position: relative;
+  z-index: 1;
+  background-color: #008fd6;
+  height: 10em;
+  margin-bottom: 1em;
+  
+}
+
 .logo-title {
   position: absolute;
   z-index: 4;
@@ -32,12 +43,9 @@
   left: 15.1%;
   top: 31%;
 }
-.date {
-  position: relative;
-  color: white;
-  left: 75%;  
-  top: 60%;
-}
+/* */
+
+/* car info container */
 .car-info-container {
   background-color: #f8f8f8;
   margin-top: 25px;
@@ -55,15 +63,32 @@
   margin: 15px;
   border-radius: 5px;  
 }
+/* */
 
-.car-info-selector-container {
+/* selection and sorting area */
+.button {
+  background-color: #008fd6;
+  text-align: center;
+  width: 140px;
+  height: 34px;
+  border-radius: 5px;
+}
+
+.button-column {
+  flex: 50%;
+}
+
+.button-container {
   display: flex;
 }
 
-.list-sort-column {
-  flex: 30%;
-  justify-content: center;
-  padding-top: 7px;
+.button-text {
+  padding-top: 8px;
+  color: white;
+}
+
+.car-info-selector-container {
+  display: flex;
 }
 
 .car-selection-column {
@@ -76,37 +101,14 @@
   margin-bottom: 15px;
 }
 
-.button-container {
-  display: flex;
+.list-sort-column {
+  flex: 30%;
+  justify-content: center;
+  padding-top: 7px;
 }
+/* */
 
-.button-column {
-  flex: 50%;
-}
-
-.button-right {
-  background-color: #008fd6;
-  text-align: center;
-  width: 140px;
-  height: 34px;
-  border-radius: 5px;
-  float: right;
-}
-
-.button-left {
-  background-color: #008fd6;
-  text-align: center;
-  width: 140px;
-  height: 34px;
-  border-radius: 5px;
-  float: left;
-}
-
-.button-text {
-  padding-top: 8px;
-  color: white;
-}
-
+/* table styling */
 #car-table {  
   border-collapse: collapse;
   width: 100%;
@@ -118,11 +120,4 @@
 }
 
 #car-table tr:nth-child(even){background-color: #eaeaea;}
-
-#car-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
-}
+/* */

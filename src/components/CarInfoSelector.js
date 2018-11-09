@@ -1,5 +1,5 @@
-import classNames from 'classnames'
 import { connect } from 'react-redux'
+import classNames from 'classnames'
 import { Dropdown } from 'semantic-ui-react'
 import React from 'react';
 import { sortByMake, sortBySpeed, topSpeedButtonSelect, weightCapacityButtonSelect } from '../actions/index'
@@ -41,15 +41,22 @@ class CarInfoSelector extends React.Component {
                     <p style={{textAlign: 'center'}}>List cars sorted by:</p>
                 </div>
                 <div className='car-selection-column'>
-                    <Dropdown onClose={this.handleDropdownSelection} className='dropdown' placeholder='Sort by...' fluid selection options={dropdownOptions} />                        
+                    <Dropdown 
+                        onClose={this.handleDropdownSelection} 
+                        className='dropdown' 
+                        placeholder='Sort by...' 
+                        fluid 
+                        selection 
+                        options={dropdownOptions} 
+                    />                        
                     <div className='button-container'>
                         <div className='button-column'>
-                            <div onClick={this.handleButtonClick} className={classNames('button-left', 'weight')}>
+                            <div onClick={this.handleButtonClick} className={classNames('button', 'weight')} style={{float: 'left'}}>
                                 <p className={classNames('button-text', 'weight')}>Weight Capacity</p>
                             </div>
                         </div>
                         <div className='button-column'>
-                            <div onClick={this.handleButtonClick} className={classNames('button-right', 'speed')}>
+                            <div onClick={this.handleButtonClick} className={classNames('button', 'speed')} style={{float: 'right'}}>
                                 <p className={classNames('button-text', 'speed')}>Top Speed</p>
                             </div>
                         </div>

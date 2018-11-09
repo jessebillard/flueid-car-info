@@ -1,8 +1,7 @@
+import './App.css';
 import CarInfoContainer from './components/CarInfoContainer';
 import Header from './components/Header';
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import './App.css';
 
 class App extends Component {
   render() {    
@@ -15,10 +14,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    state: state
-  }
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

@@ -2,29 +2,32 @@ import { connect } from 'react-redux';
 import React from 'react';
 
 class CarTable extends React.Component {
-    render() {          
+    render() {    
+        const { selectedSpeedCars, selectedWeightCar, sortedByMake, sortedBySpeed, mainCarList} = this.props      
+        // determine which list of cars to assign to variable cars
+        // redux reducer ensures only one list will be truthy
         let cars = ''
-        if (this.props.selectedSpeedCars) {
-            cars = this.props.selectedSpeedCars
-        } else if (this.props.selectedWeightCar) {
-            cars = this.props.selectedWeightCar
-        } else if (this.props.sortedByMake){
-            cars = this.props.sortedByMake
-        } else if (this.props.sortedBySpeed) {
-            cars = this.props.sortedBySpeed
+        if (selectedSpeedCars) {
+            cars = selectedSpeedCars
+        } else if (selectedWeightCar) {
+            cars = selectedWeightCar
+        } else if (sortedByMake){
+            cars = sortedByMake
+        } else if (sortedBySpeed) {
+            cars = sortedBySpeed
         } else {
-            cars = this.props.mainCarList
+            cars = mainCarList
         }        
         return (            
                 <table id='car-table'>
                     <tbody>                       
                         {cars.map((car, index) => {
-                            // conditionally renders speedMeasurement to be 'mph' if using topSpeed button
-                            // otherwise use the speedMeasurement based off of country of origin
+                            // if using topSpeed button, assigns speedMeasurement to be 'mph'
+                            // if sorting by speed or using the main list, assigns speedMeasurement based of county of origin                            
                             let speedMeasurement = ''
-                            if (this.props.selectedSpeedCars) {
+                            if (selectedSpeedCars) {
                                 speedMeasurement = 'mph'
-                            } else if (this.props.sortedBySpeed) {
+                            } else if (sortedBySpeed) {
                                 speedMeasurement = car.COO === 'USA' ? 'mph' : 'km/h'
                             } else {
                                 speedMeasurement = car.COO === 'USA' ? 'mph' : 'km/h'
@@ -33,7 +36,8 @@ class CarTable extends React.Component {
                                 <tr key={index}>
                                     <td>{car.make} {car.model}</td>
                                     <td>{car.COO}</td>
-                                    {this.props.selectedWeightCar ? <td>{car.weightCapacity} lbs weight capacity</td> : <td>{car.topSpeed} {speedMeasurement}</td> }
+                                    {/* if sorting by weight, renders <td></td> for weight, otherwise every other sort/selction case will show speed */}
+                                    {selectedWeightCar ? <td>{car.weightCapacity} lbs weight capacity</td> : <td>{car.topSpeed} {speedMeasurement}</td> }
                                 </tr>
                             )
                         })}

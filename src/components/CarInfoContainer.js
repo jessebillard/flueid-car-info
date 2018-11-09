@@ -1,6 +1,6 @@
-import React from 'react';
 import CarInfoSelector from './CarInfoSelector';
 import CarTable from './CarTable';
+import React from 'react';
 
 const CarInfoContainer = () => {
     return (
